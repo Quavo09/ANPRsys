@@ -1,0 +1,21 @@
+import pandas as pd
+
+# Sample data for the vehicle database
+data = {
+    vehicle_data = pd.read_csv(CSV_FILE)
+vehicle_data.columns = vehicle_data.columns.str.strip().str.lower()
+match = vehicle_data[vehicle_data['plate_number'].str.upper() == detected_plate]
+"CE 789 OH","YIBS","Toyota","Yaris","Blue","2021-05-12"
+"CE 823 KX","Neba Owen","Toyota","Avensis","Black","2020-03-08"
+"CE 984 JJ","MR. Landry","Toyota","Vitz","Blue Black","2022-11-19"
+"CE 260 OT","REGISTRAR","Toyota","Urban Cruiser","Grey","2019-07-15"
+
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Save to CSV
+df.to_csv("vehicle_database.csv", index=False)
+
+print("vehicle_database.csv created successfully!")
