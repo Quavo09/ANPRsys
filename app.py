@@ -87,20 +87,6 @@ region_codes = {
     "SU": "South",
     "SW": "Southwest"
 }
-
-region_coords = {
-    "AD": (7.25, 13.58),  # Ngaoundéré
-    "CE": (3.87, 11.52),  # Yaoundé
-    "EN": (12.11, 15.03), # Maroua
-    "ES": (3.75, 13.18),  # Bertoua
-    "LT": (4.05, 9.7),    # Douala
-    "NO": (9.31, 13.39),  # Garoua
-    "NW": (6.22, 10.15),  # Bamenda
-    "OU": (5.49, 10.41),  # Bafoussam
-    "SU": (2.92, 11.15),  # Ebolowa
-    "SW": (4.16, 9.24)    # Buea
-}
-
 def classify_cameroon_plate(plate):
     for plate_type, pattern in plate_patterns.items():
         if re.fullmatch(pattern, plate):
@@ -306,26 +292,6 @@ def get_region_from_plate(plate):
         return region_codes[plate[:2]]
     return "Unknown"   # <-- ensures it never stays blank
 # ========= UI =========
-import folium
-from streamlit_folium import st_folium
-
-def show_heatmap(detected_regions):
-    m = folium.Map(location=[7.3, 12.3], zoom_start=6)  # Centered in Cameroon
-
-    # Add points for each detection
-    for region in detected_regions:
-        if region in region_coords:
-            lat, lon = region_coords[region]
-            folium.CircleMarker(
-                location=[lat, lon],
-                radius=10,
-                popup=f"Detection: {region_codes[region]}",
-                color="red",
-                fill=True,
-                fill_opacity=0.6
-            ).add_to(m)
-
-    st_folium(m, width=700, height=500)
 
 st.title("ANPR Cameroon Number Plate Recognition System")
 
